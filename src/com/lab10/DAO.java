@@ -46,6 +46,22 @@ public class DAO {
 		return products;
 	}
 	
+	public void addProduct(Product product) throws Exception {
+		Connection myConn = null;
+		PreparedStatement myStmt = null;
+		ResultSet myRs = null;
+		
+		myConn = mysqlDS.getConnection();
+		String sql = "insert into product values (?, ?)";
+		myStmt = myConn.prepareStatement(sql);
+		myStmt.setInt(2, product.getShopID());
+		myStmt.setInt(2, product.getProdID());
+		myStmt.setString(3, product.getDesc());
+		myStmt.setDouble(4, product.getPrice());
+
+		myStmt.execute();			
+	}
+	
 public ArrayList<Store> loadStores() throws Exception {
 		
 		Connection myConn = null;
@@ -73,19 +89,20 @@ public ArrayList<Store> loadStores() throws Exception {
 		return stores;
 	}
 	
-	public void addProduct(Product product) throws Exception {
+	public void addStore(Store store) throws Exception {
 		Connection myConn = null;
 		PreparedStatement myStmt = null;
 		ResultSet myRs = null;
 		
 		myConn = mysqlDS.getConnection();
-		String sql = "insert into product values (?, ?)";
+		String sql = "insert into store values (?, ?)";
 		myStmt = myConn.prepareStatement(sql);
-		myStmt.setInt(2, product.getShopID());
-		myStmt.setInt(2, product.getProdID());
-		myStmt.setString(3, product.getDesc());
-		myStmt.setDouble(4, product.getPrice());
+		myStmt.setInt(1, store.getStoreID());
+		myStmt.setString(2, store.getShopName());
+		myStmt.setDate(3, store.getFounded());
 
 		myStmt.execute();			
 	}
+	
+	
 }
