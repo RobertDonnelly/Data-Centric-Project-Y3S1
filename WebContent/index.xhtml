@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+  xmlns:h="http://xmlns.jcp.org/jsf/html"
+  xmlns:f="http://xmlns.jcp.org/jsf/core">
+  
+  <h:head>
+    <title>JSF Hello World Application</title>
+  </h:head>
+  
+  <f:metadata>
+  <f:event type="preRenderView" 
+      listener="#{productController.loadProducts()}"/>
+  </f:metadata>
+   <h:outputStylesheet library="css" name="tables.css"/>
+  
+  <h:body>
+ <h:outputLink value="stores.xhtml">Manage Stores</h:outputLink>
+ 
+<h:outputLink value="product.xhtml">Manage Products</h:outputLink>
+
+<h:outputLink value="headOffice.xhtml">Manage Head Offices</h:outputLink>
+
+  </h:body>
+</html>
