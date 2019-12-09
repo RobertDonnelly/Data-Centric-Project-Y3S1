@@ -1,7 +1,9 @@
 package com.lab10;
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
@@ -46,21 +48,6 @@ public class DAO {
 		return products;
 	}
 	
-	public void addProduct(Product product) throws Exception {
-		Connection myConn = null;
-		PreparedStatement myStmt = null;
-		ResultSet myRs = null;
-		
-		myConn = mysqlDS.getConnection();
-		String sql = "insert into product values (?, ?)";
-		myStmt = myConn.prepareStatement(sql);
-		myStmt.setInt(2, product.getShopID());
-		myStmt.setInt(2, product.getProdID());
-		myStmt.setString(3, product.getDesc());
-		myStmt.setDouble(4, product.getPrice());
-
-		myStmt.execute();			
-	}
 	
 public ArrayList<Store> loadStores() throws Exception {
 		
@@ -97,12 +84,21 @@ public ArrayList<Store> loadStores() throws Exception {
 		myConn = mysqlDS.getConnection();
 		String sql = "insert into store values (?, ?)";
 		myStmt = myConn.prepareStatement(sql);
-		myStmt.setInt(1, store.getStoreID());
-		myStmt.setString(2, store.getShopName());
-		myStmt.setDate(3, store.getFounded());
+		myStmt.setString(1, store.getShopName());
+		myStmt.setDate(2, store.getFounded());
 
 		myStmt.execute();			
 	}
 	
-	
+	public void deleteProduct(int pid) throws SQLException {
+		Connection myConn = null;
+		PreparedStatement myStmt = null;
+		ResultSet myRs = null;
+		
+		myConn = mysqlDS.getConnection();
+		String sql = "delete from product where prodid = ?";
+		myStmt = myConn.prepareStatement(sql);
+		myStmt.setInt(1, pid);
+		myStmt.execute();			
+	}
 }

@@ -37,14 +37,15 @@ public class ProductController {
 		}
 	}
 	
-	public String addProduct(Product p) {
-		System.out.println(p.getProdID() + " " + p.getDesc());
+	
+	
+	public int deleteProduct(Product p) {
 		try {
-			dao.addProduct(p);
-			return "index";
+			dao.deleteProduct(p.prodID);
+			
 		} catch (SQLIntegrityConstraintViolationException e) {
 			FacesMessage message = 
-					new FacesMessage("Error: Product ID already exists");
+					new FacesMessage("Error: STORE ID already exists");
 					FacesContext.getCurrentInstance().addMessage(null, message);
 		} catch (CommunicationsException e) {
 			FacesMessage message = 
@@ -57,9 +58,9 @@ public class ProductController {
 
 			e.printStackTrace();
 		}
-		return null;
+		return 0;
 	}
-
+	
 	public ArrayList<Product> getProducts() {
 		return products;
 	}

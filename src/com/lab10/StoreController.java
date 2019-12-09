@@ -42,6 +42,7 @@ public class StoreController {
 		System.out.println(s.getStoreID() + " " + s.getShopName());
 		try {
 			dao.addStore(s);
+
 			return "index";
 		} catch (SQLIntegrityConstraintViolationException e) {
 			FacesMessage message = 
