@@ -1,5 +1,6 @@
 package com.lab10;
 
+import java.sql.SQLException;
 import java.sql.SQLIntegrityConstraintViolationException;
 import java.util.ArrayList;
 
@@ -39,26 +40,14 @@ public class ProductController {
 	
 	
 	
-	public int deleteProduct(Product p) {
+	public void deleteProduct(int p) {
 		try {
-			dao.deleteProduct(p.prodID);
-			
-		} catch (SQLIntegrityConstraintViolationException e) {
-			FacesMessage message = 
-					new FacesMessage("Error: STORE ID already exists");
-					FacesContext.getCurrentInstance().addMessage(null, message);
-		} catch (CommunicationsException e) {
-			FacesMessage message = 
-					new FacesMessage("Error: Can't communicate with DB");
-					FacesContext.getCurrentInstance().addMessage(null, message);
-		}catch (Exception e) {
-			FacesMessage message = 
-					new FacesMessage("Error: " + e.getMessage());
-					FacesContext.getCurrentInstance().addMessage(null, message);
-
+			dao.deleteProduct(p);
+		}
+		catch (SQLException e) {
 			e.printStackTrace();
 		}
-		return 0;
+		return ;
 	}
 	
 	public ArrayList<Product> getProducts() {

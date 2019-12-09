@@ -70,7 +70,7 @@ public ArrayList<Store> loadStores() throws Exception {
 			Store s = new Store();
 			s.setStoreID(myRs.getInt("id"));
 			s.setShopName(myRs.getString("name"));
-			s.setFounded(myRs.getDate("founded"));
+			s.setFounded(myRs.getString("founded"));
 			stores.add(s);
 		}
 		return stores;
@@ -85,7 +85,7 @@ public ArrayList<Store> loadStores() throws Exception {
 		String sql = "insert into store values (?, ?)";
 		myStmt = myConn.prepareStatement(sql);
 		myStmt.setString(1, store.getShopName());
-		myStmt.setDate(2, store.getFounded());
+		myStmt.setString(2, store.getFounded());
 
 		myStmt.execute();			
 	}

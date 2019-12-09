@@ -8,7 +8,7 @@ public class Store {
 	
 	int storeID;
 	String shopName;
-	Date founded;
+	String founded;
 	
 	public int getStoreID() {
 		return storeID;
@@ -22,10 +22,10 @@ public class Store {
 	public void setShopName(String shopName) {
 		this.shopName = shopName;
 	}
-	public Date getFounded() {
+	public String getFounded() {
 		return founded;
 	}
-	public void setFounded(Date founded) {
+	public void setFounded(String founded) {
 		this.founded = founded;
 	}
 }
