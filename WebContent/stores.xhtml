@@ -13,7 +13,7 @@
       listener="#{storeController.loadStores()}"/>
   </f:metadata>
    <h:outputStylesheet library="css" name="tables.css"/>
-  
+
   <h:body>
 
 <h3>Stores</h3>
@@ -40,8 +40,9 @@
 	</h:column>
 
 	<h:column>	
+	<h:commandLink value="Show Products" action="#{storeProductController.loadStoreProducts(s.storeID)}"/>
+	<br/>
 	<h:commandLink value="Delete" action="#{storeController.deleteStore(s.storeID)}"/>
-	<h:commandLink value="Show Products"/>
 	</h:column>
 	</h:dataTable>
 	

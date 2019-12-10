@@ -7,10 +7,7 @@
     <title>JSF Hello World Application</title>
   </h:head>
   <h:form>
-  <f:metadata>
-  <f:event type="preRenderView" 
-      listener="#{storeProductController.loadStoreProducts()}"/>
-  </f:metadata>
+ 
    <h:outputStylesheet library="css" name="tables.css"/>
   
   <h:body>
@@ -26,7 +23,7 @@
 	
 	<h:column>
  	  <f:facet name="header">Store Name</f:facet>
- 	  #{sp.ShopName}
+ 	  #{sp.shopName}
 	</h:column>
 	
 	<h:column>
@@ -48,11 +45,11 @@
  	  <f:facet name="header">Price</f:facet>
  	  #{sp.price}
 	</h:column>
-	
 
 	
 	</h:dataTable>
 	 <h:outputLink value="index.xhtml">Home </h:outputLink>
+	 <h:outputLink value="stores.xhtml">Stores </h:outputLink>
 
   </h:body>
   </h:form>

@@ -28,14 +28,17 @@ public class StoreProductController {
 		}
 	}
 	
-	public void loadStoreProducts(int sp) {
+	public String loadStoreProducts(int sp) {
 		System.out.println("In loadStoreProducts()");
 		try {
 			storeProducts = dao.loadStoreProducts(sp);
+			return "storeProduct";
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		return null;
+		
 	}
 	
 	public ArrayList<StoreProduct> getStoreProducts() {

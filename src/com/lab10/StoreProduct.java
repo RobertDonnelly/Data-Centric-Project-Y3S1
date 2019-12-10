@@ -3,8 +3,8 @@ package com.lab10;
 public class StoreProduct {
 
 	int shopID;
-	String ShopName;
-	String shopfounded;
+	String shopName;
+	String shopFounded;
 	int pid;
 	String pName;
 	double price;
@@ -16,16 +16,16 @@ public class StoreProduct {
 		this.shopID = shopID;
 	}
 	public String getShopName() {
-		return ShopName;
+		return shopName;
 	}
 	public void setShopName(String shopName) {
-		ShopName = shopName;
+		this.shopName = shopName;
 	}
-	public String getShopfounded() {
-		return shopfounded;
+	public String getShopFounded() {
+		return shopFounded;
 	}
-	public void setShopfounded(String shopfounded) {
-		this.shopfounded = shopfounded;
+	public void setShopFounded(String shopFounded) {
+		this.shopFounded = shopFounded;
 	}
 	public int getPid() {
 		return pid;

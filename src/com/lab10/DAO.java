@@ -123,7 +123,7 @@ public ArrayList<Store> loadStores() throws Exception {
 		
 		myConn = mysqlDS.getConnection();
 
-		String sql = "select p.pid, p.prodName, p.price, s.name, s.founded, s.id from product p inner join store s on p.sid = s.id where p.sid like" +id;
+		String sql = "select p.pid, p.prodName, p.price, s.name, s.founded, s.id from product p inner join store s on p.sid = s.id where p.sid like "+id;
 
 		myStmt = myConn.createStatement();
 
@@ -134,13 +134,14 @@ public ArrayList<Store> loadStores() throws Exception {
 		// process result set
 		while (myRs.next()) {
 			StoreProduct sp = new StoreProduct();
-			sp.setPid(myRs.getInt("id"));
-			sp.setShopName(myRs.getString("name"));
-			sp.setShopfounded(myRs.getString("founded"));
 			sp.setPid(myRs.getInt("pid"));
-			sp.setpName(myRs.getString("prodName"));
 			sp.setPrice(myRs.getDouble("price") );
-			
+			sp.setShopName(myRs.getString("name"));
+			sp.setpName(myRs.getString("prodName"));
+			sp.setShopFounded(myRs.getString("founded"));
+			sp.setShopID(myRs.getInt("id"));
+
+			System.out.println(sp.pName);
 			storeProducts.add(sp);
 		}
 		return storeProducts;

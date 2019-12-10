@@ -11,11 +11,24 @@
   <h:body>
   	<h:messages globalOnly="true"/>
     <h:form>
-      Store Name: <h:inputText value="#{store.shopName}"/><br/>
-      Founded: <h:inputText value="#{store.founded}">
-	</h:inputText><br/>
+      Store Name: <h:inputText value="#{store.shopName}" required="true" requiredMessage="Shop Name is mandatory" id="shopname"/>
+      <br/>
+      <br/>
+      <h:message for="shopname"/>
+      <br/>
+      <br/>      
+      Founded: <h:inputText value="#{store.founded}" required="true" requiredMessage="Founded Date is mandatory" id="founded"/> 
+      <br/>
+      <br/>      
+      <h:message for="founded"/>
+      <br/>
+      <br/>
     
       <h:commandButton value="OK" action="#{storeController.addStore(store)}"/>
+      <br/>
+      
+     <h:outputLink value="index.xhtml">Home </h:outputLink>
+	 <h:outputLink value="stores.xhtml">Stores </h:outputLink>
    </h:form>
   </h:body>
 </html>
