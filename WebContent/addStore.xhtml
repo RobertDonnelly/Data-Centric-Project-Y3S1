@@ -13,7 +13,6 @@
     <h:form>
       Store Name: <h:inputText value="#{store.shopName}"/><br/>
       Founded: <h:inputText value="#{store.founded}">
-      <f:convertDateTime pattern="yyyy-MM-dd" />
 	</h:inputText><br/>
     
       <h:commandButton value="OK" action="#{storeController.addStore(store)}"/>

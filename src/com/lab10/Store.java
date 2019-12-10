@@ -1,5 +1,4 @@
 package com.lab10;
-import java.sql.Date;
 
 import javax.faces.bean.ManagedBean;
 

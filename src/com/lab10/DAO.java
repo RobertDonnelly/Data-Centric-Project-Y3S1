@@ -1,6 +1,5 @@
 package com.lab10;
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -82,10 +81,11 @@ public ArrayList<Store> loadStores() throws Exception {
 		ResultSet myRs = null;
 		
 		myConn = mysqlDS.getConnection();
-		String sql = "insert into store values (?, ?)";
+		String sql = "insert into store values (?, ?, ?)";
 		myStmt = myConn.prepareStatement(sql);
-		myStmt.setString(1, store.getShopName());
-		myStmt.setString(2, store.getFounded());
+		myStmt.setInt(1,store.getStoreID());
+		myStmt.setString(2, store.getShopName());
+		myStmt.setString(3, store.getFounded());
 
 		myStmt.execute();			
 	}
@@ -96,9 +96,53 @@ public ArrayList<Store> loadStores() throws Exception {
 		ResultSet myRs = null;
 		
 		myConn = mysqlDS.getConnection();
-		String sql = "delete from product where prodid = ?";
+		String sql = "delete from product where pid = ?";
 		myStmt = myConn.prepareStatement(sql);
 		myStmt.setInt(1, pid);
 		myStmt.execute();			
+	}
+
+	public void deleteStore(int s) throws SQLException {
+		Connection myConn = null;
+		PreparedStatement myStmt = null;
+		ResultSet myRs = null;
+		
+		myConn = mysqlDS.getConnection();
+		String sql = "delete from store where id = ?";
+		myStmt = myConn.prepareStatement(sql);
+		myStmt.setInt(1, s);
+		myStmt.execute();	
+	}
+
+	
+	
+	public ArrayList<StoreProduct> loadStoreProducts(int id) throws SQLException {
+		Connection myConn = null;
+		Statement myStmt = null;
+		ResultSet myRs = null;
+		
+		myConn = mysqlDS.getConnection();
+
+		String sql = "select p.pid, p.prodName, p.price, s.name, s.founded, s.id from product p inner join store s on p.sid = s.id where p.sid like" +id;
+
+		myStmt = myConn.createStatement();
+
+		myRs = myStmt.executeQuery(sql);
+		
+		ArrayList<StoreProduct> storeProducts = new ArrayList<StoreProduct>();
+
+		// process result set
+		while (myRs.next()) {
+			StoreProduct sp = new StoreProduct();
+			sp.setPid(myRs.getInt("id"));
+			sp.setShopName(myRs.getString("name"));
+			sp.setShopfounded(myRs.getString("founded"));
+			sp.setPid(myRs.getInt("pid"));
+			sp.setpName(myRs.getString("prodName"));
+			sp.setPrice(myRs.getDouble("price") );
+			
+			storeProducts.add(sp);
+		}
+		return storeProducts;
 	}
 }

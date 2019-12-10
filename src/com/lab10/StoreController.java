@@ -1,6 +1,7 @@
 package com.lab10;
 
 
+import java.sql.SQLException;
 import java.sql.SQLIntegrityConstraintViolationException;
 import java.util.ArrayList;
 
@@ -60,6 +61,16 @@ public class StoreController {
 			e.printStackTrace();
 		}
 		return null;
+	}
+	
+	public void deleteStore(int s) {
+		try {
+			dao.deleteStore(s);
+		}
+		catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return ;
 	}
 	
 	public ArrayList<Store> getStores() {
