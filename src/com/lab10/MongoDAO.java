@@ -39,6 +39,14 @@ public class MongoDAO {
 		mongoClient.close();
 		return offices;
 	}
+
+	public void addOffice(Offices offices)throws Exception {
+		
+		FindIterable<Document> docOffice = collection.find();
+		
+	}
+
+	
 	
 	
 	
