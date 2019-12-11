@@ -1,6 +1,5 @@
 package com.lab10;
 
-
 import java.sql.SQLIntegrityConstraintViolationException;
 import java.util.ArrayList;
 
@@ -13,12 +12,12 @@ import com.mysql.cj.jdbc.exceptions.CommunicationsException;
 
 @ManagedBean
 @SessionScoped
-public class OfficeController {
+public class OfficesController {
 	MongoDAO mdao;
 	ArrayList<Offices> offices;
 	
 	//default constructor
-	public OfficeController(){
+	public OfficesController(){
 		super();
 		try {
 			mdao = new MongoDAO();

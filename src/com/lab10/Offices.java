@@ -1,5 +1,10 @@
 package com.lab10;
 
+import javax.annotation.ManagedBean;
+import javax.faces.bean.SessionScoped;
+
+@ManagedBean
+@SessionScoped
 public class Offices {
 	int storeID;
 	String hq;
