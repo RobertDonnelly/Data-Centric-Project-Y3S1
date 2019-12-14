@@ -1,15 +1,11 @@
 package com.lab10;
 
 import java.sql.SQLException;
-import java.sql.SQLIntegrityConstraintViolationException;
 import java.util.ArrayList;
 
-import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
-import javax.faces.context.FacesContext;
 
-import com.mysql.cj.jdbc.exceptions.CommunicationsException;
 
 @ManagedBean
 @SessionScoped
@@ -31,6 +27,7 @@ public class ProductController {
 	public void loadProducts() {
 		System.out.println("In loadproducts()");
 		try {
+			//calls the dao class method
 			products = dao.loadProducts();
 		} catch (Exception e) {
 			// TODO Auto-generated catch block

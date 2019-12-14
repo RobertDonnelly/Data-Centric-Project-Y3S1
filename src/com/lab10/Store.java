@@ -4,11 +4,12 @@ import javax.faces.bean.ManagedBean;
 
 @ManagedBean
 public class Store {
-	
+	//declare variables
 	int storeID;
 	String shopName;
 	String founded;
 	
+	//getters & setters
 	public int getStoreID() {
 		return storeID;
 	}

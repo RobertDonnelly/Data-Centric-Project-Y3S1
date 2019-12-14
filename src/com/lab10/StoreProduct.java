@@ -1,7 +1,8 @@
 package com.lab10;
 
 public class StoreProduct {
-
+	
+	//declare variables
 	int shopID;
 	String shopName;
 	String shopFounded;
@@ -9,6 +10,7 @@ public class StoreProduct {
 	String pName;
 	double price;
 	
+	//getters & setters
 	public int getShopID() {
 		return shopID;
 	}

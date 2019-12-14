@@ -19,6 +19,7 @@ public class DAO {
 		mysqlDS = (DataSource) context.lookup(jndiName);
 	}
 	
+	//LoadProducts() array will be called from controller  
 	public ArrayList<Product> loadProducts() throws Exception {
 		
 		Connection myConn = null;
@@ -26,13 +27,14 @@ public class DAO {
 		ResultSet myRs = null;
 		
 		myConn = mysqlDS.getConnection();
-
+		//mySql query 
 		String sql = "select * from product";
 
 		myStmt = myConn.createStatement();
 
 		myRs = myStmt.executeQuery(sql);
 		
+		//create new arraylist for result of query 
 		ArrayList<Product> products = new ArrayList<Product>();
 
 		// process result set
@@ -47,21 +49,22 @@ public class DAO {
 		return products;
 	}
 	
-	
-public ArrayList<Store> loadStores() throws Exception {
+	//LoadStores() array will be called from controller  	
+	public ArrayList<Store> loadStores() throws Exception {
 		
 		Connection myConn = null;
 		Statement myStmt = null;
 		ResultSet myRs = null;
 		
 		myConn = mysqlDS.getConnection();
-
+		//mySql query 
 		String sql = "select * from store";
 
 		myStmt = myConn.createStatement();
 
 		myRs = myStmt.executeQuery(sql);
-		
+	
+		//create new arraylist for result of query 
 		ArrayList<Store> stores = new ArrayList<Store>();
 
 		// process result set
@@ -78,7 +81,6 @@ public ArrayList<Store> loadStores() throws Exception {
 	public void addStore(Store store) throws Exception {
 		Connection myConn = null;
 		PreparedStatement myStmt = null;
-		ResultSet myRs = null;
 		
 		myConn = mysqlDS.getConnection();
 		String sql = "insert into store values (?, ?, ?)";
@@ -93,7 +95,6 @@ public ArrayList<Store> loadStores() throws Exception {
 	public void deleteProduct(int pid) throws SQLException {
 		Connection myConn = null;
 		PreparedStatement myStmt = null;
-		ResultSet myRs = null;
 		
 		myConn = mysqlDS.getConnection();
 		String sql = "delete from product where pid = ?";
@@ -105,7 +106,6 @@ public ArrayList<Store> loadStores() throws Exception {
 	public void deleteStore(int s) throws SQLException {
 		Connection myConn = null;
 		PreparedStatement myStmt = null;
-		ResultSet myRs = null;
 		
 		myConn = mysqlDS.getConnection();
 		String sql = "delete from store where id = ?";
@@ -122,13 +122,14 @@ public ArrayList<Store> loadStores() throws Exception {
 		ResultSet myRs = null;
 		
 		myConn = mysqlDS.getConnection();
-
+		//mySql query
 		String sql = "select p.pid, p.prodName, p.price, s.name, s.founded, s.id from product p inner join store s on p.sid = s.id where p.sid like "+id;
 
 		myStmt = myConn.createStatement();
 
 		myRs = myStmt.executeQuery(sql);
-		
+	
+		//create new arraylist for result of query 	
 		ArrayList<StoreProduct> storeProducts = new ArrayList<StoreProduct>();
 
 		// process result set

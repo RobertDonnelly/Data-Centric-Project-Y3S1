@@ -18,7 +18,7 @@ public class StoreController {
 
 	DAO dao;
 	ArrayList<Store> stores;
-	
+	//default constructor
 	public StoreController() {
 		super();
 		try {
@@ -32,6 +32,7 @@ public class StoreController {
 	public void loadStores() {
 		System.out.println("In loadstores()");
 		try {
+			//calls the dao class method
 			stores = dao.loadStores();
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
@@ -42,10 +43,13 @@ public class StoreController {
 	public String addStore(Store s) {
 		System.out.println(s.getStoreID() + " " + s.getShopName());
 		try {
+			//calls the dao class method & passes it the int s (id number)
 			dao.addStore(s);
-
-			return "index";
+			//returns user stores page when store added
+			return "stores";
+			
 		} catch (SQLIntegrityConstraintViolationException e) {
+			// message will appear if user tries to add store with name that already exists
 			FacesMessage message = 
 					new FacesMessage("Error: "+s.getShopName() +" already exists");
 					FacesContext.getCurrentInstance().addMessage(null, message);
@@ -65,6 +69,7 @@ public class StoreController {
 	
 	public void deleteStore(int s) {
 		try {
+			//calls the dao class method & passes it the int s (id number)
 			dao.deleteStore(s);
 		}
 		catch (SQLException e) {

@@ -5,11 +5,13 @@ import javax.faces.bean.ManagedBean;
 @ManagedBean
 public class Product {
 	
+	//declare variables
 	int shopID;
 	int prodID;
 	String desc;
 	double price;
 	
+	//getters & setters
 	public int getProdID() {
 		return prodID;
 	}

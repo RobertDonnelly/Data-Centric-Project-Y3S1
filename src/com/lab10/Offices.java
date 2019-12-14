@@ -6,9 +6,11 @@ import javax.faces.bean.SessionScoped;
 @ManagedBean
 @SessionScoped
 public class Offices {
+	//declare variables
 	int storeID;
 	String hq;
 	
+	//getters & setters
 	public int getStoreID() {
 		return storeID;
 	}

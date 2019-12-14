@@ -8,16 +8,15 @@ import javax.faces.application.FacesMessage;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 
-import com.mysql.cj.jdbc.exceptions.CommunicationsException;
 
 @ManagedBean
 @SessionScoped
-public class OfficesController {
+public class OfficeController {
 	MongoDAO mdao;
 	ArrayList<Offices> offices;
 	
 	//default constructor
-	public OfficesController(){
+	public OfficeController(){
 		super();
 		try {
 			mdao = new MongoDAO();
@@ -29,6 +28,7 @@ public class OfficesController {
 	public void loadOffices() {
 		System.out.println("in loadOffices");
 		try {
+			//calls the dao class method
 			offices = mdao.loadOffices();
 		}catch (Exception e) {
 			e.printStackTrace();
